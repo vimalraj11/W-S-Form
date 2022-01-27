@@ -8,7 +8,7 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label>First Name</label><span>*</span>
+                            <label>First Name</label><span class="text text-danger" *ngIf="regForm['firstName']?.invalid">*</span>
                             <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && regForm['firstName'].errors }" />
                             <div *ngIf="submitted && regForm['firstName'].errors" class="text text-danger">
                                 <div *ngIf="regForm['firstName'].errors['required']">First Name is required</div>
@@ -17,7 +17,7 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label>Last Name</label>
+                            <label>Last Name</label><span class="text text-danger" *ngIf="regForm['lastName']?.invalid">*</span>
                             <input type="text" id="password" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && regForm['lastName'].errors }" />
                             <div *ngIf="submitted && regForm['lastName'].errors" class="text text-danger">
                                 <div *ngIf="regForm['lastName'].errors['required']">Last Name is required</div>
@@ -28,7 +28,7 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label>Gender</label>
+                            <label>Gender</label><span class="text text-danger" *ngIf="regForm['gender']?.invalid">*</span>
                             <select formControlName="gender" class="form-control" [ngClass]="{ 'is-invalid': submitted && regForm['gender'].errors }">
                                 <option>Male</option>
                                 <option>Female</option>
@@ -41,7 +41,7 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label>Birthday:</label>
+                            <label>Birthday:</label><span class="text text-danger" *ngIf="regForm['dob']?.invalid">*</span>
                             <input type="date" formControlName="dob" class="form-control" [ngClass]="{ 'is-invalid': submitted && regForm['dob'].errors }">
                         </div>
                         <div *ngIf="submitted && regForm['dob'].errors" class="text text-danger">
@@ -51,7 +51,7 @@
                 </div>
                 <div class="form-group">
                     <div class="form-group">
-                        <label>Email</label>
+                        <label>Email</label><span class="text text-danger" *ngIf="regForm['email']?.invalid">*</span>
                         <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && regForm['email'].errors }" />
                         <div *ngIf="submitted && regForm['email'].errors" class="text text-danger">
                             <div *ngIf="regForm['email'].errors['required']">Email is required</div>
@@ -61,7 +61,7 @@
                 </div>
                 <div class="form-group">
                     <div class="form-group">
-                        <label>Phone Number</label>
+                        <label>Phone Number</label><span class="text text-danger" *ngIf="regForm['mobileNumber']?.invalid">*</span>
                         <input type="text" formControlName="mobileNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && regForm['mobileNumber'].errors }" />
                         <div *ngIf="submitted && regForm['mobileNumber'].errors" class="text text-danger">
                             <div *ngIf="regForm['mobileNumber'].errors['required']">Mobile Number is required</div>
@@ -70,7 +70,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Password</label>
+                    <label>Password</label><span class="text text-danger" *ngIf="regForm['password']?.invalid">*</span>
                     <div class="hide-show">
                         <input id="password-input" [type]="fieldTextType ? 'text' : 'password'" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && regForm['password'].errors }" />
                         <i class="glyphicon " [ngClass]="{'glyphicon-eye-open': !fieldTextType,'glyphicon-eye-close': fieldTextType}" (click)="toggleFieldTextType()"></i>
@@ -81,7 +81,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Confirm Password</label>
+                    <label>Confirm Password</label><span class="text text-danger" *ngIf="regForm['confirmPassword']?.invalid">*</span>
                     <div class="hide-show">
                         <input id="cnfirmpassword-input" [type]="fieldTextType1 ? 'text' : 'password'" formControlName="confirmPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && regForm['confirmPassword'].errors }" />
                         <i class="glyphicon " [ngClass]="{'glyphicon-eye-open': !fieldTextType1,'glyphicon-eye-close': fieldTextType1}" (click)="toggleFieldTextType1()"></i>
@@ -93,7 +93,7 @@
                 </div>
                 <div class="form-group">
                     <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input" [ngClass]="{ 'is-invalid': submitted && regForm['acceptTerms'].errors }" />
-                    <label for="acceptTerms" style="margin-left: 26px;">Accept Terms & Conditions</label>
+                    <label for="acceptTerms" style="margin-left: 26px;">Accept Terms & Conditions</label><span class="text text-danger" *ngIf="regForm['acceptTerms']?.invalid">*</span>
                     <div *ngIf="submitted && regForm['acceptTerms'].errors" class="text text-danger">Accept Ts & Cs is required</div>
                 </div>
                 <div class="form-group">
