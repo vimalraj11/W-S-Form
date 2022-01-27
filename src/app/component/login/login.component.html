@@ -1,0 +1,89 @@
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <p>Template Form</p>
+        </div>
+        <div class="card-body">
+            <form name="form" (ngSubmit)="form.form.valid && onSubmit()" #form="ngForm" novalidate>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label>First Name</label>
+                        <input type="text" class="form-control" name="fname" [(ngModel)]="model.fname" #fname="ngModel" [ngClass]="{ 'is-invalid': form.submitted && fname.invalid }" required>
+                        <div class="text text-danger" *ngIf="fname.touched && fname.invalid">
+                            <div *ngIf="fname.errors?.['required']">First Name is required</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <label>Last Name</label>
+                        <input type="text" class="form-control" name="lname" [(ngModel)]="model.lname" #lname="ngModel" [ngClass]="{ 'is-invalid': form.submitted && lname.invalid }" required>
+                        <div class="text text-danger" *ngIf="lname.touched && lname.invalid">
+                            <div *ngIf="fname.errors?.['required']">Last Name is required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Email-Id</label>
+                    <input type="text" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel" [ngClass]="{ 'is-invalid': form.submitted && email.invalid }" required email>
+                    <div class="text text-danger" *ngIf="email.touched && email.invalid">
+                        <div *ngIf="email.errors?.['required']">Email is required</div>
+                        <div *ngIf="email.errors?.['email']">Email must be a valid email address</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" class="form-control" name="pNumber" [(ngModel)]="model.pNumber" #pNumber="ngModel" [ngClass]="{ 'is-invalid': form.submitted && pNumber.invalid }" required minlength="10">
+                    <div class="text text-danger" *ngIf="pNumber.touched && pNumber.invalid">
+                        <div *ngIf="pNumber.errors?.['required']">Phone number is required</div>
+                        <div *ngIf="pNumber.errors?.['minlength']">Phone number must be a valid 10 digit number</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="gender">Geneder </label>
+                    <div class="form-group">
+                        <input type="radio" value="male" id="gender" name="gender" #gender="ngModel" required [(ngModel)]="model.gender"> Male
+                        <input type="radio" value="female" id="gender" name="gender" #gender="ngModel" required [(ngModel)]="model.gender"> Female
+                    </div>
+                    <div class="text text-danger" *ngIf="gender.touched && gender.invalid">
+                        <div *ngIf="gender.errors?.['required']">
+                            Gender is required
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <div class="hide-show">
+                        <input [type]="fieldTextType ? 'text' : 'password'" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" [ngClass]="{ 'is-invalid': form.submitted && password.invalid }" minlength="6" required/>
+                        <i class="glyphicon " [ngClass]="{'glyphicon-eye-open': !fieldTextType,'glyphicon-eye-close': fieldTextType}" (click)="toggleFieldTextType()"></i>
+                    </div>
+                    <div *ngIf="password.touched && password.invalid" class="text text-danger">
+                        <div *ngIf="password.errors?.['required']">Password is required</div>
+                        <div *ngIf="password.errors?.['minlength']">Password must be at least 6 characters</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Confrim Password</label>
+                    <div class="hide-show">
+                        <input [type]="fieldTextType1 ? 'text' : 'password'" class="form-control" name="cpassword" [(ngModel)]="model.cpassword" #cpassword="ngModel" [ngClass]="{ 'is-invalid': form.submitted && cpassword.invalid }" minlength="6" required/>
+                        <i class="glyphicon " [ngClass]="{'glyphicon-eye-open': !fieldTextType1,'glyphicon-eye-close': fieldTextType1}" (click)="toggleFieldTextType1()"></i>
+                    </div>
+                    <div *ngIf="cpassword.touched && cpassword.invalid" class="text text-danger">
+                        <div *ngIf="cpassword.errors?.['required']">Confirm Password is required</div>
+                        <div *ngIf="cpassword.errors?.['minlength']">Confirm Password must be at least 6 characters</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" id="isToc" name="isToc" required #isToc="ngModel" [(ngModel)]="model.isToc">
+                    <label>Accepet trems and Condition</label>
+                    <div class="text text-danger" *ngIf="isToc.touched && isToc.invalid">
+                        <div *ngIf=" isToc.errors?.[ 'required'] ">
+                            Please accept the TOC
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <button class="btn btn-primary " [disabled]="form.invalid ">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
